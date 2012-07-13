@@ -63,12 +63,15 @@ Over 1,400,000 sites have installed AddThis. With over a billion unique users, A
 == Changelog ==
 
 = 1.0.1 = 
-Auto-hide now functions
+* Auto-hide now functions
 
 = 1.0.0 =
 * Initial Version
 
 == Upgrade Notice ==
+
+= 1.0.1 =
+* Auto-hide after now functions correctly :)
 
 = 1.0.0 =
 * If you're upgrading to this, you are super special
