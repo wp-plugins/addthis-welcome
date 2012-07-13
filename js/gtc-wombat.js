@@ -16,6 +16,8 @@ wom.log = function() {
 	//console.log.apply(console,arguments);
 };
 
+var wc;
+
 
 var currentPanel = false;
 
@@ -191,6 +193,17 @@ var tracking = {
 		}
 		if('enabled' in fake) {
 			real.show = fake.enabled;
+		}
+		
+		for(var i in fake) {
+			switch(i) {
+				case 'hideAfter':
+					real.hideAfter = fake.hideAfter;
+					break;
+				default:
+					break;
+			}
+			
 		}
 		
 		
@@ -704,7 +717,7 @@ var tracking = {
 	};
 
 	var defineConfig = function() {
-        var wc = (typeof window.wombat_config != 'undefined') ? window.wombat_config : {} ;
+        wc = (typeof window.wombat_config != 'undefined') ? window.wombat_config : {} ;
 		/* Define wombat_config
 		*/
 		wom.log(wc);
@@ -883,24 +896,41 @@ var tracking = {
 			return(! (charCode > 31 && (charCode < 48 || charCode > 57)) );
 		};
 	
-		$("#TBdisT").keypress(function(evt) {
-			var charCode = (evt.which) ? evt.which : event.keyCode;
-			return isNumber(charCode);
-		});
-		//Control: Dismissal Time
-		$("#TBdisT").keyup(function()
-		{
-			wombat_config[wombat_config.length-1].config.dismissTime = $("#TBdisT").val();
-			codeError.dismiss.time = isNaN($("#TBdisT").val())?true:false;
-			genCode();
-		});
+
+
+		
+		if(typeof wc !== 'undefined' && 'default' in wc && 'hideAfter' in wc['default']) {
+			$("#CBdisT").attr('checked','checked');
+			$("#TBdisT").val(wc['default'].hideAfter)
+		}
+		
 		//Control: Dismissal Time Enabler
-		$("#CBdisT").click(function()
-		{
-			wombat_config[wombat_config.length-1].config.dismiss = !wombat_config[wombat_config.length-1].config.dismiss;
-			wombat_config[wombat_config.length-1].config.dismissTime = $("#TBdisT").val();
+		
+		var changeHideAfter = function() {
+			
+
+			var checked = $("#CBdisT").attr('checked');
+			if(typeof checked !== 'undefined' && checked === 'checked') {
+				var hideAfter = parseInt($("#TBdisT").val());
+				if(hideAfter === NaN) {
+					return;
+				}
+				if(hideAfter) {
+					wombat_default.hideAfter = hideAfter;
+				}
+			} else {
+				if('hideAfter' in wombat_default) {
+					delete wombat_default.hideAfter;
+				}
+			}
+			
 			genCode();
-		});
+			
+		}
+		
+		$("#CBdisT").click(changeHideAfter);
+		$("#TBdisT").change(changeHideAfter);
+		
 	
 	};
 	

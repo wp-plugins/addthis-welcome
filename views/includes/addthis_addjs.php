@@ -38,7 +38,7 @@ Class AddThis_addjs{
             _doing_it_wrong( 'addthis_addjs', 'Only one instance of this class should be initialized.  Look for the $addthis_addjs global first',1 ); 
         }
 
-        $this->productCode = '';
+		$this->productCode = 'wpp-265'; 
 
         // Version of AddThis code to use
         $this->atversion = '250';
@@ -107,6 +107,7 @@ Class AddThis_addjs{
     }
 
     function wrapJs(){
+		$this->jsToAdd .= "var addthis_product = '".$this->productCode."';\n"; 
         $this->jsToAdd = '<script type="text/javascript">' . $this->jsToAdd . '</script>';
     }
 
