@@ -1,5 +1,5 @@
 === AddThis Welcome Bar === 
-Contributors: joesullivan, srijithv, _mjk_, solchea, addthis_paul, jorbin
+Contributors: joesullivan, srijith.v, _mjk_, solchea, addthis_paul, jorbin
 Tags: follow, addthis, social,  widget, AddThis 
 Requires at least: 3.3.2
 Tested up to: 3.4.1
