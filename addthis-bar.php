@@ -3,7 +3,7 @@
 Plugin Name: AddThis Welcome Bar
 Plugin URI: http://www.addthis.com
 Description: The Welcome Bar from AddThis
-Version: 1.0.1
+Version: 1.1
 Author: AddThis
 Author URI: http://www.addthis.com
 License: None
@@ -57,7 +57,7 @@ function addthis_bar_options_page() {
 function addthis_bar_admin_menu() {
 
     $addthis_bar_options_page = add_options_page('AddThis Welcome Bar', 
-            'AddThis Welcome Bar', 
+            'AddThis Welcome', 
             'manage_options',
             'addthis_welcome', 
             'addthis_bar_options_page');

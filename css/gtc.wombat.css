@@ -650,11 +650,17 @@ display:none;
 .at-wrap{
 
 }
-.at-tabs {
+/*.at-tabs {
 	position:relative;
 	left:700px;
 	top:30px;
 	width:190px;
+}*/
+.at-tabs {
+    left: 680px;
+    position: relative;
+    top: 47px;
+    width: 215px;
 }
 
 .at-tabs a{

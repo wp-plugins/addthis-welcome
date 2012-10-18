@@ -1,17 +1,3 @@
-<style>
-
-#icon-edit.addthis.icon32{
-background: url(//s7.addthis.com/static/r07/widget005_32x32_top.png) no-repeat left;
-background-position: 0 -416px!important;
-overflow: hidden;
-display: block;
-height: 32px!important;
-width: 32px!important;
-line-height: 32px!important;
-}
-
-</style>
-
 <div class='at-wrap wrap'>
 	
 	<div class="at-tabs">
@@ -31,8 +17,8 @@ line-height: 32px!important;
 		</a>
 	</div>
 	
-	<div id="icon-edit" class="icon32 addthis"><br></div>
-	<h2>AddThis Welcome Bar</h2>
+	<p><img alt='addthis' src="//cache.addthis.com/icons/v1/thumbs/32x32/more.png" class="header-img"/>
+    <span class="addthis-title">AddThis</span> <span class="addthis-plugin-name">Welcome</span></p>
 	
 	<div class='clear'></div>
 </div>

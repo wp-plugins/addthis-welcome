@@ -36,8 +36,8 @@ line-height: 15px;
 
 <div>	    
     <div class="wbcontainer ml10" style="">
-		<div style="position:absolute;right:68px;top:20px">
-		<span>Profile ID:</span>
+		<div style="position:absolute;right:74px;top:28px">
+		<strong>AddThis Profile ID:</strong>
         <input style="width:240px;" size=18 maxlength="80" class="fixInput" value="<?php 
 			global $addthis_addjs;
 			$pubid = $addthis_addjs->pubid ;
@@ -143,7 +143,7 @@ line-height: 15px;
 		<input type='hidden' id='wbCode' class="addthis_bar_config_input" name='addthis_bar_config_default' />
 
 		
-        	<input class="button-primary" type="submit" name="save" value="<?php _e('Save Options'); ?>" id="submit-button" style="float:right"/>    
+        	
 	</div>
 			<div class="clear"></div>
 	    
@@ -179,7 +179,11 @@ line-height: 15px;
 	            <input type="text" id="TBdisT" value="20" size="3" style="margin-left:0;"/>sec
 			</div>
             
-        </div><br>
+        </div>
+        <p>
+            <input class="button-secondary" type="submit" name="save" value="<?php _e('Save'); ?>" id="submit-button"/>
+        </p>
+        <br />
 			<div>
 			<h4>Additional features</h4>
             <span>Use the <a href="//support.addthis.com/customer/portal/articles/524574-addthis-bar-api" target="_blank">Welcome bar API</a> to design a custom greeting for your site. Welcome visitors based on location, time of day, new vs. returning, and more.</span>
