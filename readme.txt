@@ -59,6 +59,10 @@ All of the options required through this plugin require javascript.   JavaScript
 Over 1,400,000 sites have installed AddThis. With over a billion unique users, AddThis is helping publishers and brands all over the world, in more than sixty languages. You might be surprised who's using AddThis--<a href="http://www.addthis.com/features#partners">here are just a few</a>.
 
 
+== Screenshots ==
+
+1. Configuring the welcome bar
+2. Welcoming users coming from Facebook
 
 == Changelog ==
 
