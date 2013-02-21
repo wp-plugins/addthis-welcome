@@ -1,13 +1,21 @@
-<div class="wbcontainer">
-<?php  
-global $addthis_addjs;
-echo $addthis_addjs->getAtPluginPromoText();
-?>
+<?php
 
+$activated = get_option('addthis_bar_activated');
+if($activated == '0') {
+		echo '<span style="float: left;margin-left: 680px;margin-top: 20px;">Addthis Welcome plugin is currently deactivated</span>';
+	} else {
+	echo '<span style="float: left;margin-left: 680px;margin-top: 20px;">Addthis Welcome plugin is currently activated</span>';
+	}?>
+
+<div class="wbcontainer">
+<?php if(get_option('addthis_bar_activated') == '0' && isset($_GET)) {
+    	echo '<div class="updated"><p>Welcome Addthis plugin is currently deactivated. For your configurations to appear on the website, you need to activate the plugin first.</p></div>';
+} ?>
+<div class="error" id="set-error" style="display:none;">Please select atleast one rule.</div>
 <form method="post" action="options.php"> 
 
 
-<?php require('includes/static_assets.php') ?>
+<?php //require('includes/static_assets.php') ?>
 <?php require('includes/configurator_script.php') ?>
 
 <script type='text/javascript'>
@@ -16,6 +24,33 @@ if(typeof wombat_config === 'undefined') {
 	wombat_config = {};
 }
 </script>
+<?php 
+if(get_option('addthis_bar_config_default') != '') {
+	$options = get_option('addthis_bar_config_default');
+	$background = explode('"backgroundColor": "', $options);
+	$bgColor = explode('",', $background[1]);
+	$text = explode('"textColor": "', $options);
+	$tColor = explode('",', $text[1]);
+	$btn = explode('"buttonColor": "', $options);
+	$btnColor = explode('",', $btn[1]);
+	$btnText = explode('"buttonTextColor": "', $options);
+	$btnTextColor = explode('",', $btnText[1]);
+
+echo "<style type='text/css'>
+.addthis_bar_container {
+	background-color: $bgColor[0] !important;
+}
+.addthis_bar_p {
+	color: $tColor[0] !important;
+}
+.addthis_bar_button {
+	background-color: $btnColor[0] !important;
+	color: $btnTextColor[0] !important;
+	border-color: $btnColor[0] !important;
+}
+</style>";
+}
+?>
 <style>
 
 .fixInput{
@@ -30,6 +65,7 @@ line-height: 15px;
 
 .addthis_bar_container{
 	z-index:1000;
+	color:none;
 }
 
 </style>
@@ -141,7 +177,7 @@ line-height: 15px;
 		<?php settings_fields('addthis_bar_config_default'); ?>
 		<?php // $options = get_options('addthis_bar_config_default'); ?>
 		<input type='hidden' id='wbCode' class="addthis_bar_config_input" name='addthis_bar_config_default' />
-
+		<input type="hidden" name="is-set" id="is-set" value="" />
 		
         	
 	</div>
@@ -153,8 +189,8 @@ line-height: 15px;
 			<h3 class="helv org">Finalize appearance</h3>
         </div>
 
-        <div class="clrPkr br4" style="overflow:auto;padding-right:20px;">
-			<div style="float:left;padding-left:15px;padding-right:30px">
+        <div class="clrPkr br4" style="overflow:auto;padding-right:20px;width:900px;">
+			<div style="float:left;padding-left:15px;width:655px;padding-right:10px;">
 	            <div style="font-size:14px;float:none"><b>Colors</b></div><br>
 	            <div>
 	                <span>Background:</span><br />
@@ -173,16 +209,17 @@ line-height: 15px;
 	                <input type="text" id="buttonTextColor" class="color-picker" size="6" value="#FFFFFF" style="position:relative;top:1px;padding-right:0px;margin-right:0px"/>
 	            </div>
 			</div>
-			<div style="float:left" style="padding-left:45px;padding-right:100px">
-				<div style="font-size:14px;float:none"><b>Auto-dismiss bar</b></div><p />
-	            <input type="checkbox" id="CBdisT" style="top:-3px;position:relative"/>After
-	            <input type="text" id="TBdisT" value="20" size="3" style="margin-left:0;"/>sec
+			<div style="float:left;width:220px;" style="padding-left:45px;padding-right:100px">
+				<div style="font-size:14px;float:none"><b style="float:left;padding-left:6px;">Auto-dismiss bar</b></div><p style="margin-top:20px;float:left;width:130px;">
+	            <input type="checkbox" id="CBdisT" style="top: 0px;position: relative;float: left;"/><span style="float: left;margin-top: 3px;">After</span>
+	            <input type="text" id="TBdisT" value="20" size="3" style="margin-left:3px;margin-right:3px;float:left;margin-top:0;"/><span style="float: left;margin-top: 3px;">sec</span></p>
 			</div>
             
         </div>
         <p>
             <input class="button-secondary" type="submit" name="save" value="<?php _e('Save'); ?>" id="submit-button"/>
         </p>
+        <div id="rules-error" style="display:none;" class="error">Please select atleast one rule.</div>
         <br />
 			<div>
 			<h4>Additional features</h4>
@@ -191,6 +228,7 @@ line-height: 15px;
         </div>
     </div>
    	<div class="clear"></div>
+   	
 </div>
 <div id="lightbox-panel">
 	<a id="close-panel" class="lb-close" href="#">X</a>

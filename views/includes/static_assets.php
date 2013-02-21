@@ -26,4 +26,10 @@ $advanced = get_option('addthis_bar_config_advanced');
 	if('' . $advanced == '0') {
 		wp_enqueue_script('at-gtc-wombat', $addthis_welcome_bar_js_base .'gtc-wombat.js' , false, '1.0.0' );
 	}
+	
+$activated = get_option('addthis_bar_activated');
+
+	if('' . $activated == '0') {
+		wp_enqueue_script('at-gtc-wombat', $addthis_welcome_bar_js_base .'gtc-wombat.js' , false, '1.0.0' );
+	}
 ?>

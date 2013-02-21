@@ -691,11 +691,11 @@ var tracking = {
 		addthis.bar.initialize({ 'backgroundColor': '#000', 'rememberHide': false});
 		addthis.addEventListener('addthis.bar.ready', function()
 		{
-			if($('#wbRules').children().first().find('span').html() === ' All visitors') {
-				$('#wbRules').children()[1].click(); //sorry!
-			} else {
+//			if($('#wbRules').children().first().find('span').html() === ' All visitors') {
 				$('#wbRules').children()[0].click(); //sorry!
-			}
+//			} else {
+//				$('#wbRules').children()[0].click(); //sorry!
+//			}
 			
 		});
 	};
@@ -713,6 +713,7 @@ var tracking = {
 			wombat_config[getServiceIndex()].config[name+"Custom"] = $("#"+id).val();
 			break;
 		}
+		
 		initOpts(wombat_config[getServiceIndex()]);
 	};
 
@@ -740,6 +741,7 @@ var tracking = {
 		{	
 			name : "All visitors",
 			rule : {
+				service : "preferred"
 			},
 			config : {
 				messageText : "If you enjoy this page, do us a favor:",
@@ -752,7 +754,7 @@ var tracking = {
 				dismiss : false,
 				service : "preferred"
 			},
-			enabled:false,
+			enabled:true,
 			custom:false
 		},
 		{
@@ -868,7 +870,7 @@ var tracking = {
 	var initColorPicker = function() {
 		wom.log('initColorPicker',wombat_default.config);
 		$('#barColor').val(wombat_default.config.barColor);
-		$('#messageColor').val(wombat_default.config.messageColor);
+		$('#messageColor').val(wombat_default.config.barTextColor);
 		$('#buttonColor').val(wombat_default.config.buttonColor);
 		$('#buttonTextColor').val(wombat_default.config.buttonTextColor);
 		
@@ -909,8 +911,9 @@ var tracking = {
 		var changeHideAfter = function() {
 			
 
-			var checked = $("#CBdisT").attr('checked');
-			if(typeof checked !== 'undefined' && checked === 'checked') {
+			//var checked = $("#CBdisT").attr('checked');
+			//if(typeof checked !== 'undefined' && checked === 'checked') {
+			if ($('#CBdisT').is(':checked')) {
 				var hideAfter = parseInt($("#TBdisT").val());
 				if(hideAfter === NaN) {
 					return;
@@ -930,7 +933,7 @@ var tracking = {
 		
 		$("#CBdisT").click(changeHideAfter);
 		$("#TBdisT").change(changeHideAfter);
-		
+		changeHideAfter();
 	
 	};
 	
@@ -942,16 +945,19 @@ var tracking = {
 		$("#welcomeMsg").keyup(function()
 		{
 			recordInput("welcomeMsg","messageText");
+			$("#welcomeMsg").focus();
 		});
 		//Control: Button Text
 		$("#btnTxt").keyup(function()
 		{
 			recordInput("btnTxt","buttonText");
+			$("#btnTxt").focus();
 		});
 		//Control: Button Url
 		$("#btnUrl").keyup(function()
 		{
 			recordInput("btnUrl","buttonUrl");
+			$("#btnUrl").focus();
 		});
 		$("#followSelect").change(function()
 		{
@@ -963,6 +969,7 @@ var tracking = {
 		{
 			wombat_config[getServiceIndex()].config.serviceFollow = $('#followSelect').val();
 			recordInput("followId","followId");
+			$("#followId").focus();
 		});
 
 		//Control: Button Type
@@ -1028,12 +1035,14 @@ var tracking = {
 				target = target.parentNode;
 			}
 			currentPanel = Array.prototype.indexOf.call(target.parentNode.children, target);
+
 		}
 		
 		$(".wbcWhoSel").removeClass("wbcWhoSel").addClass("wbcWho");
 		$(this).removeClass("wbcWho").addClass("wbcWhoSel");
 		index = $(this).index()+1;
 		initOpts(wombat_config[currentPanel]);
+		
 	};
 	
 	var renderWhoPanels = function() {
@@ -1372,32 +1381,48 @@ var tracking = {
 		
 		current_selection = '';
 
-		defineConfig();
-		defineTemplates();
-		//testWhoPanelRender();
+		if (typeof wombat_config !== 'undefined') {
+			defineConfig();
+			defineTemplates();
+			//testWhoPanelRender();
 		
-		initOpts(wombat_config[0]);
-		initColorPicker();
-		initDismissalTime();
-		initFormElements();
-		initWhoPanels();
-		initWhoPanelInputs();
-		initNewServiceListener();
-		initLightBox();
-		initPopupTabNav();
-		addServiceVisitor();
-		resetChecks();
-		addUrlTextBoxListener();
-		addUrlVisitorListener();
-		initCodeBox();
-		initProfileChangeListener();
-		checkForPub();
-		loadServices();
-
-		addthis.addEventListener('addthis.ready', addthisBarReadyHandler);
+			initOpts(wombat_config[0]);	
+			
+			initColorPicker();
+			initDismissalTime();
+			initFormElements();
+			initWhoPanels();
+			initWhoPanelInputs();
+			initNewServiceListener();
+			initLightBox();
+			initPopupTabNav();
+			addServiceVisitor();
+			resetChecks();
+			addUrlTextBoxListener();
+			addUrlVisitorListener();
+			initCodeBox();
+			initProfileChangeListener();
+			checkForPub();
+			loadServices();
+		
+			addthis.addEventListener('addthis.ready', addthisBarReadyHandler);
+		}
 	};
 	
 $ = jQuery;
 $(document).ready(function() {
 	init();
+	$('#submit-button').click(function() {
+		var all_checkboxes = $('#wbRules input[type="checkbox"]');
+		if (all_checkboxes.filter(":checked").length == 0) {
+			$('#rules-error').show();
+			return false;
+		}
+		else {
+			return true;
+		}
+	});
+	
 });
+
+

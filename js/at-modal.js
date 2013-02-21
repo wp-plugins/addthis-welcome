@@ -12,6 +12,7 @@ $(document).ready(function() {
 	
 	var atModalCancelHandler = function() {
 		$('.at-welcome-dialog').hide();
+		$('.at-welcome-activate').hide();
 		$('.at-modal-target').removeClass('at-overlay');
 	}
 	
@@ -37,8 +38,8 @@ $(document).ready(function() {
 			$('#at-welcome-dialog-cancel').click(atModalCancelHandler);
 			//$('#at-welcome-dialog-ok').click(atModalOkHandler);
 		});
-		
-		
+	
+
 	}
 
 	
@@ -62,9 +63,23 @@ $(document).ready(function() {
 		//$('#at-welcome-dialog-ok').click(atModalOkHandler);
 	});
 	
+	$('.at-modal-trigger-activate').click(function() {
+				
+		$('.at-modal-target').addClass('at-overlay');
+		
+		
+		var dialog = $('.at-welcome-activate');
+		dialog.remove();
+		$('.at-modal-target').append(dialog);
+		
+		var dialog = $('.at-welcome-activate');
+		dialog.remove();
+		$('body').append(dialog);
+		$('.at-welcome-activate').show();
+		$('#at-welcome-activate-cancel').click(atModalCancelHandler);
+	});
 	
-	
-	
+		
 	
 });
 })(jQuery);

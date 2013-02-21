@@ -348,7 +348,7 @@ background:rgba(0,0,0,.25);
 -moz-border-radius:6px;
 -webkit-border-radius:6px;
 border-radius:6px;
-z-index:1001;
+z-index:11111112;
 padding:10px;
 }
 
@@ -465,7 +465,7 @@ font-weight:500;
 font-weight:500;
 margin-top:4px;
 width:20px;
-padding:10px;
+padding:0 10px 10px 10px;
 }
 
 .gradient {
@@ -660,7 +660,7 @@ display:none;
     left: 680px;
     position: relative;
     top: 47px;
-    width: 215px;
+    width: 325px;
 }
 
 .at-tabs a{
@@ -671,10 +671,11 @@ display:none;
 	overflow:auto;
 	color:#fff;
 	font-weight:bold;
-	
-	
+	text-decoration: none;	
 	cursor:pointer;
 	user-select:none;
+	margin-right:5px;
+	font-size:12px;
 }
 
 .at-tabs a:hover{
@@ -745,7 +746,7 @@ margin-left:20px;
 */
 
 
-.at-welcome-dialog {
+.at-welcome-dialog, .at-welcome-activate, .at-welcome-deactivate {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -760,15 +761,16 @@ margin-left:20px;
     -moz-box-shadow: 1px 1px 6px rgba(204,204,204,.8);
 	z-index:600000;
 }
-.at-welcome-dialog p {
+.at-welcome-dialog p, .at-welcome-activate p, .at-welcome-deactivate p {
     line-height: 1.4em;
     font-size: 1.1em;
 }
-.at-welcome-dialog .at-welcome-dialog-buttons {
+.at-welcome-dialog .at-welcome-dialog-buttons, .at-welcome-activate .at-welcome-welcome-buttons, .at-welcome-deactivate .at-welcome-welcome-buttons {
     padding-top: 10px;
-    text-align: center;    
+    text-align: center;
+    float:left;
 }
-.at-welcome-dialog .at-welcome-dialog-buttons .button {
+.at-welcome-dialog .at-welcome-dialog-buttons .button, .at-welcome-activate .at-welcome-activate-buttons .button, .at-welcome-deactivate .at-welcome-deactivate-buttons .button {
     margin: 0 10px;
 }
 
@@ -777,6 +779,34 @@ input{
 }
 
 #urlSelect{
-	padding:4px;
+	padding:0 4px 0 4px;
 	height:24px;
+}
+
+#at-welcome-activate-cancel {
+	margin-top: 4px;
+	margin-left: 10px;
+}
+
+.addthis-btn {
+	 background-attachment: scroll;
+	 background-clip: border-box;
+	 background-color: transparent;
+	 background-image: url("../img/widget005_32x32_top.png");
+	 background-origin: padding-box;
+	 background-position: 0 -416px !important;
+	 background-repeat: no-repeat;
+	 background-size: auto auto;
+	 display: block;
+	 height: 32px !important;
+	 line-height: 32px !important;
+	 overflow: hidden;
+	 width: 32px !important;
+	 float:left;
+}
+
+.at-wrap .addthis-btn {
+	padding: 5px;
+	height: 22px !important;
+	margin-top: -8px;
 }
