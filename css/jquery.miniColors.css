@@ -7,6 +7,7 @@
 	margin: 0 .25em;
 	display: inline-block;
 	outline: none;
+	background: none;
 }
 
 .miniColors-selector {
@@ -63,4 +64,8 @@
 	width: 26px;
 	height: 3px;
 	background: url(images/line.gif) center no-repeat;
+}
+.miniColors-triggerWrap {
+	background:none;
+	width:75px;
 }

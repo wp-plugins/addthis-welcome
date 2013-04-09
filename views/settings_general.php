@@ -1,13 +1,23 @@
 <div class='at-wrap wrap'>
 	
 	<div class="at-tabs">
-		
+		<?php 
+		$activated = get_option('addthis_bar_activated');
+//		$activated = 0;
+		?>
+		<a class="at-modal-trigger-activate" 
+		<?php if($activated == '0') { 
+			echo 'title="Developers: Activate the Addthis Welcome plugin to show the welcome bar on your website.">Activate';
+		 } else {
+			echo 'title="Developers: Deactivate the Addthis Welcome plugin to remove the welcome bar from your website.">Deactivate</a>';
+		} ?>
+		</a>
 		<?php  
 		$advanced = get_option('addthis_bar_config_advanced');
 		?>
 		
-		<a class="at-modal-trigger" <?php
-			if($advanced != '0' ) {
+		<a class="at-modal-trigger" 
+		<?php if($advanced != '0' ) {
 				//if(current_user_can('subscriber'))
 				echo 'title="Developers: Edit your Welcome Bar plugin code using our API to unlock additional features.">Revert to Default Plugin';
 			} else {
@@ -15,9 +25,11 @@
 			} ?>
 			
 		</a>
+		
 	</div>
 	
-	<p><img alt='addthis' src="//cache.addthis.com/icons/v1/thumbs/32x32/more.png" class="header-img"/>
+	<p>
+	<span class="addthis-btn"></span>
     <span class="addthis-title">AddThis</span> <span class="addthis-plugin-name">Welcome</span></p>
 	
 	<div class='clear'></div>
@@ -43,4 +55,22 @@
 		</button>
 	    
 	</div>
-
+	<div class="at-welcome-activate" style="display:none">
+	    <p><?php 
+		if($activated == '0') {
+			echo "Are you sure you want to activate the Addthis Welcome plugin?";
+		} else {
+			echo "Are you sure you want to deactivate the Addthis Welcome plugin?";
+		} ?>	
+		</p>
+	    <form class="at-welcome-dialog-buttons" method="post" action="options.php" style="float:left;margin-top:2px;padding-top:0">
+	    	<?php settings_fields('addthis_bar_activated'); ?>
+			<?php $options = get_option('addthis_bar_activated'); ?>
+			<input type="hidden" name="addthis_bar_activated" value = "<?php if( get_option('addthis_bar_activated') != '0') { echo '0';} else { echo '1';} ?>" />
+	        <input id="at-welcome-activate-ok" class="button button-highlighted" type="submit" value="OK" />		
+		</form>
+		<button id="at-welcome-activate-cancel" class="button" value="Cancel" />
+			Cancel
+		</button>
+	    
+	</div>

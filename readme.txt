@@ -2,8 +2,8 @@
 Contributors: joesullivan, srijith.v, _mjk_, solchea, addthis_paul, jorbin
 Tags: follow, addthis, social,  widget, AddThis 
 Requires at least: 3.3.2
-Tested up to: 3.4.2
-Stable tag: 1.1
+Tested up to: 3.5,1
+Stable tag: 1.2.1
 
 Welcome visitors with a personalized greeting based on their social network preferences 
 
@@ -66,6 +66,14 @@ Over 1,400,000 sites have installed AddThis. With over a billion unique users, A
 
 == Changelog ==
 
+= 1.2.1 =
+* Minor bug fixes
+
+= 1.2 = 
+* Updated UI
+* Option to deactivate Welcome bar temporarily
+* Bug fixes
+
 = 1.1 = 
 * Updated UI on Configurations
 * Updated Plugin Framework
@@ -77,6 +85,12 @@ Over 1,400,000 sites have installed AddThis. With over a billion unique users, A
 * Initial Version
 
 == Upgrade Notice ==
+
+= 1.2.1 =
+* Bug fixes
+
+= 1.2 = 
+* Updated UI and option to temporarily deactivate welcome bar
 
 = 1.1 = 
 * Updated UI on configurations and Plugin Framework
