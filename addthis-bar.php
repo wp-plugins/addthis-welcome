@@ -3,13 +3,13 @@
 Plugin Name: AddThis Welcome Bar
 Plugin URI: http://www.addthis.com
 Description: The Welcome Bar from AddThis
-Version: 1.2.1
+Version: 1.2.2
 Author: AddThis
 Author URI: http://www.addthis.com
 License: None
 */
 
-define(ADDTHIS_WELCOME_PRODUCT_CODE, 'wpwb-121');
+define(ADDTHIS_WELCOME_PRODUCT_CODE, 'wpp');
 define(ADDTHIS_WELCOME_AT_VERSION, 300);
 
 /* Insert the bar into the template off of action 'template_redirect' */
