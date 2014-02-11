@@ -128,4 +128,32 @@ function addthis_bar_deactivate() {
 	update_option( 'addthis_bar_config_default', '{}' );
 }
 
+// check for pro user
+function is_welcome_pro_user() {
+    $isPro = false;
+    $options = get_option('addthis_settings');
+    $profile = $options['profile'];
+    if ($profile) {
+        $profile_code = str_replace('-', '', $profile);
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, "http://q.addthis.com/feeds/1.0/config.json?pubid=" . $profile);
+
+        // receive server response ...
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+        // further processing ....
+        $server_output = curl_exec($ch);
+        curl_close($ch);
+        
+        $array = json_decode($server_output);
+        // check for pro user
+        if (array_key_exists('_default',$array)) {
+            $isPro = true;
+        } else {
+            $isPro = false;
+        }
+    }
+    return $isPro;
+}
+
 ?>
