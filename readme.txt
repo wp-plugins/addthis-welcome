@@ -2,8 +2,8 @@
 Contributors: srijith.v, _mjk_, solchea, addthis_paul
 Tags: follow, addthis, social,  widget, AddThis 
 Requires at least: 3.3.2
-Tested up to: 3.5,1
-Stable tag: 1.2.2
+Tested up to: 3.8.1
+Stable tag: 1.2.3
 
 Welcome visitors with a personalized greeting based on their social network preferences 
 
@@ -66,6 +66,9 @@ Over 1,400,000 sites have installed AddThis. With over a billion unique users, A
 
 == Changelog ==
 
+= 1.2.3 =
+* Minor updates
+
 = 1.2.2 =
 * Fix for compatibility with AddThis Smart Layers plugin
 
@@ -88,6 +91,9 @@ Over 1,400,000 sites have installed AddThis. With over a billion unique users, A
 * Initial Version
 
 == Upgrade Notice ==
+
+= 1.2.3 =
+* Minor update
 
 = 1.2.2 =
 * Compatibility with AddThis Smart Layers plugin
