@@ -9,7 +9,7 @@ Author URI: http://www.addthis.com
 License: None
 */
 
-define(ADDTHIS_WELCOME_PRODUCT_CODE, 'wpp');
+define(ADDTHIS_WELCOME_PRODUCT_CODE, 'wpp-1.2.3');
 define(ADDTHIS_WELCOME_AT_VERSION, 300);
 
 /* Insert the bar into the template off of action 'template_redirect' */
