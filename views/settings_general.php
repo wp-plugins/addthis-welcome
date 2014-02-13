@@ -1,5 +1,17 @@
 <div class='at-wrap wrap'>
-	
+    <?php if(!at_welcome_is_pro_user()) { ?>
+    <div class="updated addthis_setup_nag">
+        <p>AddThis Pro now available - start your trial at 
+            <a href="http://www.addthis.com" target="_blank">www.addthis.com</a> 
+            and get premium widgets, personalized content recommendations, 
+            advanced customization options and priority support.
+        </p>
+    </div>
+    <?php } ?>
+    <?php  
+        global $addthis_addjs;
+        echo $addthis_addjs->getAtPluginPromoText();
+    ?>
 	<div class="at-tabs">
 		<?php 
 		$activated = get_option('addthis_bar_activated');

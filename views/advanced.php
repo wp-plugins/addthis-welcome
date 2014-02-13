@@ -6,10 +6,6 @@ if($activated == '0') {
 	echo '<span style="margin-left: 680px;margin-top: 20px;float: left;">Addthis Welcome plugin is currently activated</span>';
 	}?>
 <div class="">
-<?php  
-global $addthis_addjs;
-echo "<div style='float: left; width: 100%;'>".$addthis_addjs->getAtPluginPromoText()."</div>";
-?>
 
 <?php //require('includes/static_assets.php') ?>
 
