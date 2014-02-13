@@ -3,7 +3,7 @@ Contributors: srijith.v, _mjk_, solchea, addthis_paul
 Tags: follow, addthis, social,  widget, AddThis 
 Requires at least: 3.3.2
 Tested up to: 3.8.1
-Stable tag: 1.2.3
+Stable tag: 1.2.4
 
 Welcome visitors with a personalized greeting based on their social network preferences 
 
@@ -65,6 +65,8 @@ Over 1,400,000 sites have installed AddThis. With over a billion unique users, A
 
 
 == Changelog ==
+= 1.2.4 =
+* Minor bug fix
 
 = 1.2.3 =
 * Minor updates
@@ -91,6 +93,8 @@ Over 1,400,000 sites have installed AddThis. With over a billion unique users, A
 * Initial Version
 
 == Upgrade Notice ==
+= 1.2.4 =
+* Minor bug fix
 
 = 1.2.3 =
 * Minor update

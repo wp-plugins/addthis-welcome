@@ -1,5 +1,5 @@
 <div class='at-wrap wrap'>
-    <?php if(!is_welcome_pro_user()) { ?>
+    <?php if(!at_welcome_is_pro_user()) { ?>
     <div class="updated addthis_setup_nag">
         <p>AddThis Pro now available - start your trial at 
             <a href="http://www.addthis.com" target="_blank">www.addthis.com</a> 

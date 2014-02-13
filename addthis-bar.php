@@ -3,13 +3,13 @@
 Plugin Name: AddThis Welcome Bar
 Plugin URI: http://www.addthis.com
 Description: The Welcome Bar from AddThis
-Version: 1.2.3
+Version: 1.2.4
 Author: AddThis
 Author URI: http://www.addthis.com
 License: None
 */
 
-define(ADDTHIS_WELCOME_PRODUCT_CODE, 'wpp-1.2.3');
+define(ADDTHIS_WELCOME_PRODUCT_CODE, 'wpp-1.2.4');
 define(ADDTHIS_WELCOME_AT_VERSION, 300);
 
 /* Insert the bar into the template off of action 'template_redirect' */
@@ -129,12 +129,11 @@ function addthis_bar_deactivate() {
 }
 
 // check for pro user
-function is_welcome_pro_user() {
+function at_welcome_is_pro_user() {
     $isPro = false;
     $options = get_option('addthis_settings');
     $profile = $options['profile'];
     if ($profile) {
-        $profile_code = str_replace('-', '', $profile);
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, "http://q.addthis.com/feeds/1.0/config.json?pubid=" . $profile);
 
